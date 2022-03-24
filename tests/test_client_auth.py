@@ -31,16 +31,21 @@ def mock_get_client_token(mocker):
     mock_post_response.json.return_value = {"access_token": ACCESS_TOKEN}
 
 
+@pytest.mark.parametrize("append_auth", ["true", "false"])
 def test_client_token_aquired_and_appended_to_requests(
-    mock_get_client_token, httpserver
+    append_auth, mock_get_client_token, httpserver
 ):
+    os.environ["AUTH_APPEND_CLIENT_TOKEN"] = append_auth
     endpoint = "/users"
     httpserver.expect_request("/users").respond_with_data({})
     response = requests_client.get(httpserver.url_for(endpoint))
 
-    # The client auth token is aquired and added to
-    # the `"Authorization"` header in downstream requests
-    assert response.request.headers["Authorization"] == f"Bearer {ACCESS_TOKEN}"
+    if append_auth == "true":
+        # The client auth token is aquired and added to
+        # the `"Authorization"` header in downstream requests
+        assert response.request.headers["Authorization"] == f"Bearer {ACCESS_TOKEN}"
+    else:
+        assert "Authorization" not in response.request.headers
 
 
 def test_user_id_appended_to_requests(mock_get_client_token, httpserver):

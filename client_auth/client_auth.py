@@ -12,15 +12,19 @@ logger = logging.getLogger(__name__)
 
 TRUTHY_VALUES = ("true", "1")
 
-AUTH_APPEND_CLIENT_TOKEN = (
-    os.environ.get("AUTH_APPEND_CLIENT_TOKEN", "false") in TRUTHY_VALUES
+
+def get_auth_append_client_token_value():
+    return os.environ.get("AUTH_APPEND_CLIENT_TOKEN", "false") in TRUTHY_VALUES
+
+
+AUTH_CLIENT_ID = get_env_var(
+    "AUTH_CLIENT_ID", raise_exception=get_auth_append_client_token_value()
 )
-AUTH_CLIENT_ID = get_env_var("AUTH_CLIENT_ID", raise_exception=AUTH_APPEND_CLIENT_TOKEN)
 AUTH_CLIENT_SECRET = get_env_var(
-    "AUTH_CLIENT_SECRET", raise_exception=AUTH_APPEND_CLIENT_TOKEN
+    "AUTH_CLIENT_SECRET", raise_exception=get_auth_append_client_token_value()
 )
 AUTH_TOKEN_ENDPOINT = get_env_var(
-    "AUTH_TOKEN_ENDPOINT", raise_exception=AUTH_APPEND_CLIENT_TOKEN
+    "AUTH_TOKEN_ENDPOINT", raise_exception=get_auth_append_client_token_value()
 )
 
 CLIENT_TOKEN = None
@@ -97,7 +101,7 @@ def get_client_token():
 
     """
 
-    if not get_client_token:
+    if not get_auth_append_client_token_value():
         return None
 
     if token_has_expired():
