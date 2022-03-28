@@ -16,5 +16,5 @@ with open("requirements.txt") as f:
 if __name__ == "__main__":
     setup(
         install_requires=required,
-        packages=["client_aith"],
+        packages=["client_auth"],
     )
