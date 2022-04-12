@@ -14,7 +14,9 @@ TRUTHY_VALUES = ("true", "1")
 
 
 def get_auth_append_client_token_value():
-    return os.environ.get("AUTH_APPEND_CLIENT_TOKEN", "false") in TRUTHY_VALUES
+    value = os.environ.get("AUTH_APPEND_CLIENT_TOKEN", "false")
+    value = logger.info(value)
+    return value in TRUTHY_VALUES
 
 
 AUTH_CLIENT_ID = get_env_var(
