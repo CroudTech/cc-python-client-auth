@@ -58,7 +58,9 @@ def request_new_client_token():
         "Content-Type": "application/x-www-form-urlencoded",
     }
     body = {"grant_type": "client_credentials"}
-    response = requests_with_retry.post(AUTH_TOKEN_ENDPOINT, headers=headers, data=body)
+    response = requests_with_retry.post(  # nosec
+        AUTH_TOKEN_ENDPOINT, headers=headers, data=body
+    )
     response.raise_for_status()
     return response.json()
 

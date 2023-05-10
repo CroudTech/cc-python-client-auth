@@ -8,13 +8,13 @@ It also provides other helpers to simply aquire a client auth token if needed.
 
 ## Environment Variables:
 
-| Name | Description |
-| --- | --- |
+| Name                     | Description                                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------------------- |
 | AUTH_APPEND_CLIENT_TOKEN | Whether or not to acquire and append an auth token header to requests made with requests_client |
-| AUTH_CLIENT_ID | The client credentials client ID. Required for the token exchange |
-| AUTH_CLIENT_SECRET | The client credentials secret. Also required for the token exchange |
-| AUTH_TOKEN_ENDPOINT | The aquire token endpoint |
-| DEFAULT_REQUEST_TIMEOUT | Timeout value (seconds) for requests made with requests_client (Default: 10) |
+| AUTH_CLIENT_ID           | The client credentials client ID. Required for the token exchange                               |
+| AUTH_CLIENT_SECRET       | The client credentials secret. Also required for the token exchange                             |
+| AUTH_TOKEN_ENDPOINT      | The aquire token endpoint                                                                       |
+| DEFAULT_REQUEST_TIMEOUT  | Timeout value (seconds) for requests made with requests_client (Default: 10)                    |
 
 ## Usage:
 
@@ -46,9 +46,9 @@ return response.json()
 
 **Result:**
 
-An additional  `ImpersonateAsPrincipal` header is added to the request
+An additional `ImpersonateAsPrincipal` header is added to the request
 
-e.g  `{"ImpersonateAsPrincipal": "12345"}` 
+e.g `{"ImpersonateAsPrincipal": "12345"}`
 
 ### Timeouts:
 
@@ -56,7 +56,7 @@ A default timeout value of `10` is set on requests you can override this by sett
 
 ### Retries:
 
-For convenience add an exponential retry config is also added to the request client, requests will be retried three times 
+For convenience add an exponential retry config is also added to the request client, requests will be retried three times
 
 ### Additional helpers:
 

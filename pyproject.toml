@@ -1,3 +1,32 @@
+[tool.pytest.ini_options]
+pythonpath = [
+  "client_auth"
+]
+[tool.poetry]
+name = "client-auth"
+version = "0.1.0"
+description = ""
+authors = ["occy88croud <octavio.delser@croud.com>"]
+readme = "README.md"
+packages = [{include = "client_auth"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "*"
+pyjwt = "*"
+pytest = "^7.3.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+flake8 = "*"
+flake8-bugbear = "*"
+isort = "*"
+pytest-cov = "*"
+pytest-httpserver = "*"
+pytest-mock = "*"
+pytest-xdist = "*"
+
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta:__legacy__"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

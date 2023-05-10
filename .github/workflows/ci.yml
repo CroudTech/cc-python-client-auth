@@ -14,8 +14,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
-          python -m pip install -U pip pipenv
-          pipenv install --dev --system --deploy
+          python -m pip install -U pip poetry
+          poetry install
       - name: Run black
         run: black . --check
       - name: Run flake8
