@@ -23,7 +23,7 @@ It also provides other helpers to simply aquire a client auth token if needed.
 The syntax is exactly the same as making a request directly with the `requests` package
 
 ```python
-from client_auth import requests_client
+from cc_python_client_auth import requests_client
 
 response = requests_client.get("example.com/users")
 response.response.raise_for_status()
@@ -37,7 +37,7 @@ return response.json()
 Optionally you can also added a `user_id` param to the request syntax where user impersonation is required, this will append the `user_id` value as a `ImpersonateAsPrincipal` header to be processed in the target service
 
 ```python
-from client_auth import requests_client
+from cc_python_client_auth import requests_client
 
 response = requests_client.get("example.com/users", user_id="12345")
 response.response.raise_for_status()
@@ -65,7 +65,7 @@ For convenience add an exponential retry config is also added to the request cli
 If you would prefer to simply retrieve a get client token response you can call this method directly
 
 ```python
-from client_auth import request_new_client_token
+from cc_python_client_auth import request_new_client_token
 
 get_token_response = request_new_client_token()
 ```
@@ -75,7 +75,7 @@ get_token_response = request_new_client_token()
 This is another requests client without the auth applied but will retry on failures as above
 
 ```python
-from client_auth import requests_with_retry
+from cc_python_client_auth import requests_with_retry
 
 response = requests_with_retry.get("example.com/users")
 response.response.raise_for_status()
@@ -87,7 +87,7 @@ return response.json()
 A helper method for getting env vars and optionally raising an exception if no values are provided
 
 ```python
-from client_auth import get_env_var
+from cc_python_client_auth import get_env_var
 
 my_var = get_env_var("MY_VAR", default="My Value", raise_exception=True)
 ```

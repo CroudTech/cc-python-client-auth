@@ -1,14 +1,12 @@
 [tool.pytest.ini_options]
-pythonpath = [
-  "client_auth"
-]
+pythonpath = ["cc_python_client_auth/"]
 [tool.poetry]
-name = "client-auth"
+name = "cc-python-client-auth"
 version = "0.1.0"
 description = ""
 authors = ["occy88croud <octavio.delser@croud.com>"]
 readme = "README.md"
-packages = [{include = "client_auth"}]
+packages = [{include = "cc_python_client_auth"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

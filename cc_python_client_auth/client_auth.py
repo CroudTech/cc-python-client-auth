@@ -5,7 +5,7 @@ from datetime import datetime
 
 import jwt
 
-from client_auth.utils import get_env_var
+from cc_python_client_auth.utils import get_env_var
 
 
 logger = logging.getLogger(__name__)
@@ -48,7 +48,7 @@ def request_new_client_token():
 
     """
 
-    from client_auth.client_requests import requests_with_retry
+    from cc_python_client_auth.client_requests import requests_with_retry
 
     authorization = b64encode(
         bytes(f"{AUTH_CLIENT_ID}:{AUTH_CLIENT_SECRET}", "ISO-8859-1")
