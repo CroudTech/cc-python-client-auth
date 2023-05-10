@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: python:3.8-slim
+    container: python:3.11-slim
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
