@@ -12,10 +12,12 @@ packages = [{include = "cc_python_client_auth"}]
 python = "^3.10"
 requests = "*"
 pyjwt = "*"
-pytest = "^7.3.1"
 
 
 [tool.poetry.group.dev.dependencies]
+# Test-only. It was listed as a runtime dependency, so every consumer
+# (e.g. cc-django-platform-api) installed pytest into production images.
+pytest = "^7.3.1"
 black = "*"
 flake8 = "*"
 flake8-bugbear = "*"
