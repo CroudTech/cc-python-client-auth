@@ -6,7 +6,7 @@ from requests.adapters import HTTPAdapter
 from requests.auth import AuthBase
 from requests.packages.urllib3.util.retry import Retry
 
-from client_auth import client_auth
+from . import client_auth
 
 
 REQUEST_TIMEOUT = os.environ.get("DEFAULT_REQUEST_TIMEOUT", 10)

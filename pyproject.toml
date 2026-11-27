@@ -1,3 +1,32 @@
+[tool.pytest.ini_options]
+pythonpath = ["cc_python_client_auth/"]
+[tool.poetry]
+name = "cc-python-client-auth"
+version = "0.1.0"
+description = ""
+authors = ["occy88croud <octavio.delser@croud.com>"]
+readme = "README.md"
+packages = [{include = "cc_python_client_auth"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "*"
+pyjwt = "*"
+
+
+[tool.poetry.group.dev.dependencies]
+# Test-only. It was listed as a runtime dependency, so every consumer
+# (e.g. cc-django-platform-api) installed pytest into production images.
+pytest = "^7.3.1"
+black = "*"
+flake8 = "*"
+flake8-bugbear = "*"
+isort = "*"
+pytest-cov = "*"
+pytest-httpserver = "*"
+pytest-mock = "*"
+pytest-xdist = "*"
+
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta:__legacy__"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
